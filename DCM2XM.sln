@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCM2XM", "DCM2XM.csproj", "{F591CF09-6E5D-4CB8-B03A-56B30C2BF569}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F591CF09-6E5D-4CB8-B03A-56B30C2BF569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F591CF09-6E5D-4CB8-B03A-56B30C2BF569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F591CF09-6E5D-4CB8-B03A-56B30C2BF569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F591CF09-6E5D-4CB8-B03A-56B30C2BF569}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FECAF962-E629-4944-8204-95186CDA47DC}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,104 @@
+﻿            /*
+            for (int i = 0; i < DCMData.sampleCount; i++)
+            {
+                var currentSample = DCMData.samples[i];
+
+
+                var wb = new PCM16WAV()
+                {
+                    format = 1,
+                    sampleRate = 16000,
+                    channels = 1,
+                    blockAlign = 2,
+                    bitsPerSample = 16,
+
+                };
+
+                FileStream wlx;
+
+                if ((currentSample.flags & (int)DCMSampleFlags.PCM16) > 0)
+                {
+                    wlx = File.OpenWrite($"{i}_{currentSample.id}_pcm16.wav");
+                    Console.WriteLine($"{i}_{currentSample.id} PCM16!!");
+                    File.WriteAllBytes($"{i}_{currentSample.id}16.pcm", currentSample.pcmData);
+                    wb.buffer = PCM16ByteToShort(currentSample.pcmData);
+                }
+                else
+                {
+                    Console.WriteLine($" {currentSample.id} PCM8");
+                    wlx = File.OpenWrite($"{i}_{currentSample.id}_pcm8.wav");
+                    File.WriteAllBytes($"{i}_{currentSample.id}8.pcm", currentSample.pcmData);
+                    wb.buffer = PCM8216(currentSample.pcmData);
+                }
+
+                if ((currentSample.flags & (int)DCMSampleFlags.LOOP) > 0 || ((currentSample.flags & (int)DCMSampleFlags.BIDI) > 0))
+                {
+                    if (currentSample.loopstart > 0 | currentSample.loopend > 0)
+                    {
+                        wb.sampler.loops = new SampleLoop[1];
+                        wb.sampler.loops[0] = new SampleLoop()
+                        {
+                            dwIdentifier = 0,
+                            dwEnd = (int)currentSample.loopend,
+                            dwFraction = 0,
+                            dwPlayCount = 0,
+                            dwStart = (int)currentSample.loopstart,
+                            dwType = ((currentSample.flags & (int)DCMSampleFlags.BIDI) > 0) ? 1 : 0,
+                        };
+                    }
+                }
+                var wlxw = new BinaryWriter(wlx);
+                wb.writeStreamLazy(wlxw);
+                wlxw.Flush();
+                wlxw.Close();
+
+            }
+            */
+            /*
+            var dcmReader = new DCMSongReader(DCMData);
+            var tW = new StringBuilder();
+            while (dcmReader.nextRow())
+            {
+                
+                for (int i = 0; i < dcmReader.channels.Length; i++)
+                {
+                    var chn = dcmReader.channels[i];
+                    tW.Append("|");
+                    if (((chn.infoByte & (int)DCMSongReader.EVENT.FREQUENCY) > 0) && (chn.infoByte & (int)DCMSongReader.EVENT.SAMPLE) > 0)
+                        tW.Append($"FXX");
+                    else if ((chn.infoByte & (int)DCMSongReader.EVENT.SAMPLE) > 0)
+                        tW.Append($"XXX");
+                    else if ((chn.infoByte & (int)DCMSongReader.EVENT.NOTEOFF) > 0)
+                        tW.Append($"==-");
+                    else if ((chn.infoByte & (int)DCMSongReader.EVENT.FREQUENCY) > 0)
+                        tW.Append("FFF");
+                    else
+                        tW.Append($"---");
+
+                    if ((chn.infoByte & (int)DCMSongReader.EVENT.INSTRUMENT) > 0)
+                        tW.Append($"{chn.instrument:X2}");
+                    else
+                        tW.Append($"--");
+
+                    if ((chn.infoByte & (int)DCMSongReader.EVENT.VOLUME) > 0)
+                        tW.Append($"v{chn.volume:X2}");
+                    else
+                        tW.Append($"---");
+
+
+                    if ((chn.infoByte & (int)DCMSongReader.EVENT.SETBPM) > 0)
+                        tW.Append($"T{dcmReader.bpm:X2}");
+                    else if ((chn.infoByte & (int)DCMSongReader.EVENT.PAN) > 0)
+                        tW.Append($"X{chn.pan:X2}");
+                    else if ((chn.infoByte & (int)DCMSongReader.EVENT.OFFSET) > 0)
+                        tW.Append($"O{chn.offset:X2}");
+                    else if ((chn.infoByte & (int)DCMSongReader.EVENT.TRIGGR) > 0)
+                        tW.Append($"Z{chn.trigger:X2}");
+                    else
+                        tW.Append("---");
+            
+                }
+                tW.Append("\n");
+            }
+            */
+            //File.WriteAllText("TestModule.txt", tW.ToString());
